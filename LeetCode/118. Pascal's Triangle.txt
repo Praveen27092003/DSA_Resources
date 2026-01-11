@@ -1,0 +1,21 @@
+var generate = function(numRows) {
+    
+    let res = [[1]]
+    
+    for(let i=0 ; i<numRows-1; i++){
+        let temp = [0,...res.at(-1),0]
+        let temp_res = []
+        for(let j=0; j<temp.length-1; j++){
+            let add = temp[j] + temp[j+1]
+            temp_res.push(add)
+            
+        }
+        res.push(temp_res)
+    }
+    
+    
+    
+    return res
+    
+    
+};

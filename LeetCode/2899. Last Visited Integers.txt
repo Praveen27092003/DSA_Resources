@@ -1,0 +1,26 @@
+function findLastVisitedIntegers(nums) {
+    let seen = [];
+    let ans = [];
+    let consecutiveMinusOnes = 0;
+
+    for (let i = 0; i < nums.length; i++) {
+        if (nums[i] > 0) {
+            seen.unshift(nums[i]);
+            consecutiveMinusOnes = 0; // Reset the consecutive -1 counter
+        } else if (nums[i] === -1) {
+            consecutiveMinusOnes++;
+            if (consecutiveMinusOnes <= seen.length) {
+                ans.push(seen[consecutiveMinusOnes - 1]);
+            } else {
+                ans.push(-1);
+            }
+        }
+    }
+
+    return ans;
+}
+
+// Example usage:
+let nums = [4, -1, 5, -1, -1, 6, -1];
+let result = findLastVisitedIntegers(nums);
+console.log(result); // Output: [4, 5, 4, 6]

@@ -1,0 +1,16 @@
+function getRow(rowIndex) {
+    let row = [1];  // Initialize the first row as [1]
+
+    for (let i = 1; i <= rowIndex; i++) {
+        let newRow = new Array(i + 1).fill(1);  // Create a new row with size (i+1) all set to 1
+
+        // Fill the middle values of the newRow using values from the previous row
+        for (let j = 1; j < i; j++) {
+            newRow[j] = row[j - 1] + row[j];  // The value is the sum of two numbers from the previous row
+        }
+
+        row = newRow;  // Update the current row to the newly constructed row
+    }
+
+    return row;  // Return the row once the desired row is built
+}

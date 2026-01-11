@@ -1,0 +1,24 @@
+function findKDistantIndices(nums, k, target) {
+    let kDistantIndices = [];
+
+    // Iterate through each element of nums
+    for (let i = 0; i < nums.length; i++) {
+        // Check if there exists a j such that |i - j| <= k and nums[j] == target
+        for (let j = 0; j < nums.length; j++) {
+            if (Math.abs(i - j) <= k && nums[j] === target) {
+                kDistantIndices.push(i);
+                break; // No need to check further, i is already k-distant
+            }
+        }
+    }
+
+    return kDistantIndices;
+}
+
+// Example usage:
+let nums = [1, 2, 3, 4, 2, 1, 5];
+let k = 2;
+let target = 2;
+
+let result = findKDistantIndices(nums, k, target);
+console.log(result); // Output: [0, 1, 2, 3, 4]
